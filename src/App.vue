@@ -8,12 +8,15 @@ import Journey from './components/Journey.vue'
 import Contact from './components/Contact.vue'
 import CommandPalette from './components/CommandPalette.vue'
 import CvPreviewModal from './components/CvPreviewModal.vue'
+import ScrollProgress from './components/ScrollProgress.vue'
+import BackToTop from './components/BackToTop.vue'
 import { useReveal } from './composables/useReveal'
 
 useReveal()
 </script>
 
 <template>
+  <ScrollProgress />
   <Navbar />
   <main class="min-h-screen bg-ink">
     <Hero />
@@ -25,4 +28,5 @@ useReveal()
   </main>
   <CommandPalette />
   <CvPreviewModal />
+  <BackToTop />
 </template>
