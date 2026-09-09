@@ -2,6 +2,9 @@
 import { defineAsyncComponent } from 'vue'
 import { ArrowRight, Download } from '@lucide/vue'
 import { profile, stats } from '../data/portfolio'
+import { useCvPreview } from '../composables/useCvPreview'
+
+const cvPreview = useCvPreview()
 
 const ThreeBackground = defineAsyncComponent(() => import('./ThreeBackground.vue'))
 
@@ -49,15 +52,13 @@ function resetTilt(event) {
             Contact Me
             <ArrowRight :size="16" class="transition group-hover:translate-x-1" />
           </button>
-          <a
-            :href="profile.cvUrl"
-            target="_blank"
-            rel="noopener"
+          <button
             class="flex items-center gap-2 rounded-full border border-line/15 px-6 py-3 text-sm font-medium text-heading transition hover:border-line/40"
+            @click="cvPreview.open()"
           >
             <Download :size="16" />
-            Download CV
-          </a>
+            View CV
+          </button>
         </div>
 
         <div class="mt-10 grid grid-cols-3 gap-4 border-t border-line/10 pt-8 sm:mt-14 sm:gap-6">

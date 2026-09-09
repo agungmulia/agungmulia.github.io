@@ -6,6 +6,8 @@ import Skills from './components/Skills.vue'
 import Projects from './components/Projects.vue'
 import Journey from './components/Journey.vue'
 import Contact from './components/Contact.vue'
+import CommandPalette from './components/CommandPalette.vue'
+import CvPreviewModal from './components/CvPreviewModal.vue'
 import { useReveal } from './composables/useReveal'
 
 useReveal()
@@ -21,4 +23,6 @@ useReveal()
     <Projects />
     <Contact />
   </main>
+  <CommandPalette />
+  <CvPreviewModal />
 </template>

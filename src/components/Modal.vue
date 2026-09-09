@@ -4,6 +4,7 @@ import { X } from '@lucide/vue'
 
 const props = defineProps({
   open: { type: Boolean, default: false },
+  panelClass: { type: String, default: 'max-w-lg' },
 })
 const emit = defineEmits(['close'])
 
@@ -25,7 +26,8 @@ function onBackdropClick(event) {
 <template>
   <dialog
     ref="dialog"
-    class="w-full max-w-lg rounded-2xl border border-line/10 bg-panel p-0 text-body backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+    class="w-full rounded-2xl border border-line/10 bg-panel p-0 text-body backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+    :class="panelClass"
     @click="onBackdropClick"
     @close="emit('close')"
   >
