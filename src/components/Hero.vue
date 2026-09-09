@@ -1,5 +1,5 @@
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
 import { ArrowRight, Download } from '@lucide/vue'
 import { profile, stats } from '../data/portfolio'
 import { useCvPreview } from '../composables/useCvPreview'
@@ -11,6 +11,53 @@ const ThreeBackground = defineAsyncComponent(() => import('./ThreeBackground.vue
 function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
+
+// Stats like "4+ Years" count up from 0 to 4 once visible; non-numeric
+// stats like "Node.js + Vue" just render as-is.
+const parsedStats = stats.map((stat) => {
+  const match = stat.value.match(/^(\d+)(.*)$/)
+  return match ? { target: Number(match[1]), suffix: match[2] } : null
+})
+const counts = ref(parsedStats.map((parsed) => (parsed ? 0 : null)))
+
+function displayValue(stat, index) {
+  const parsed = parsedStats[index]
+  return parsed ? `${counts.value[index]}${parsed.suffix}` : stat.value
+}
+
+function animateCount(index, target, duration = 1200) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduceMotion) {
+    counts.value[index] = target
+    return
+  }
+  const start = performance.now()
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1)
+    const eased = 1 - Math.pow(1 - progress, 3)
+    counts.value[index] = Math.round(eased * target)
+    if (progress < 1) requestAnimationFrame(tick)
+  }
+  requestAnimationFrame(tick)
+}
+
+const statsRow = ref(null)
+let statsObserver
+
+onMounted(() => {
+  statsObserver = new IntersectionObserver(
+    (entries) => {
+      if (!entries[0].isIntersecting) return
+      parsedStats.forEach((parsed, index) => {
+        if (parsed) animateCount(index, parsed.target)
+      })
+      statsObserver.disconnect()
+    },
+    { threshold: 0.4 },
+  )
+  if (statsRow.value) statsObserver.observe(statsRow.value)
+})
+onUnmounted(() => statsObserver?.disconnect())
 
 function tilt(event) {
   const el = event.currentTarget
@@ -61,9 +108,14 @@ function resetTilt(event) {
           </button>
         </div>
 
-        <div class="mt-10 grid grid-cols-3 gap-4 border-t border-line/10 pt-8 sm:mt-14 sm:gap-6">
-          <div v-for="stat in stats" :key="stat.label">
-            <p class="font-display text-xl font-semibold text-heading sm:text-2xl">{{ stat.value }}</p>
+        <div
+          ref="statsRow"
+          class="mt-10 grid grid-cols-3 gap-4 border-t border-line/10 pt-8 sm:mt-14 sm:gap-6"
+        >
+          <div v-for="(stat, index) in stats" :key="stat.label">
+            <p class="font-display text-xl font-semibold tabular-nums text-heading sm:text-2xl">
+              {{ displayValue(stat, index) }}
+            </p>
             <p class="mt-1 text-xs text-subtle">{{ stat.label }}</p>
           </div>
         </div>
