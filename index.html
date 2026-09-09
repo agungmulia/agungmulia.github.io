@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="gT6vELoYGXXGf7iBp6AuWHx4CGNzhS3uFAaYIeDe6hg" />
+    <script>
+      // Set the theme before first paint to avoid a flash of the wrong theme.
+      ;(function () {
+        var stored = localStorage.getItem('theme')
+        var theme = stored || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
+    <link rel="icon" href="./icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Agung Mulia Eko Putra — Full-stack Software Engineer</title>
+    <meta
+      name="description"
+      content="Agung Mulia Eko Putra — full-stack software engineer based in Batam, Indonesia, building scalable backend services, e-commerce integrations, and responsive frontends with Node.js, Vue, and React."
+    />
+    <meta name="author" content="Agung Mulia Eko Putra" />
+    <link rel="canonical" href="https://agungmulia.github.io/" />
+
+    <!-- Open Graph / social previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://agungmulia.github.io/" />
+    <meta property="og:title" content="Agung Mulia Eko Putra — Full-stack Software Engineer" />
+    <meta
+      property="og:description"
+      content="Full-stack software engineer based in Batam, Indonesia, building scalable backend services, e-commerce integrations, and responsive frontends."
+    />
+    <meta property="og:image" content="https://agungmulia.github.io/img/hero-portrait.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Agung Mulia Eko Putra — Full-stack Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Full-stack software engineer based in Batam, Indonesia, building scalable backend services, e-commerce integrations, and responsive frontends."
+    />
+    <meta name="twitter:image" content="https://agungmulia.github.io/img/hero-portrait.png" />
+
+    <!-- Structured data so search engines can associate this page with the person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Agung Mulia Eko Putra",
+        "alternateName": "Agung Mulia",
+        "url": "https://agungmulia.github.io/",
+        "image": "https://agungmulia.github.io/img/hero-portrait.png",
+        "jobTitle": "Full-stack Software Engineer",
+        "email": "mailto:agungmulia.business@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Batam",
+          "addressCountry": "ID"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Universitas Atma Jaya Yogyakarta" },
+          { "@type": "EducationalOrganization", "name": "Kartini Vocational High School" }
+        ],
+        "sameAs": [
+          "https://github.com/agungmulia",
+          "https://www.linkedin.com/in/agungmulia/",
+          "https://www.instagram.com/agungdanmulia"
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-ink text-body antialiased">
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
