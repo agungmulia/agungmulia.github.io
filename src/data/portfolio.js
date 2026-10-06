@@ -77,6 +77,15 @@ export const skills = [
 
 export const projects = [
   {
+    title: 'Numpak — Car Rental Platform',
+    year: '2026',
+    description:
+      'Car rental booking app for Batam: browse the fleet, pick dates, add a driver if needed, with clear daily pricing and promo codes.',
+    image: 'numpak.jpg',
+    link: 'https://numpak-rental.vercel.app/',
+    tags: ['Nuxt', 'Vercel'],
+  },
+  {
     title: 'Android App UI Automation API',
     year: '2025',
     description:
