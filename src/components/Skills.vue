@@ -1,5 +1,5 @@
 <script setup>
-import { Terminal, Monitor, Server, Database, Cloud, Bot } from '@lucide/vue'
+import { Terminal, Monitor, Server, Database, Cloud, Bot, Languages } from '@lucide/vue'
 import { skills } from '../data/portfolio'
 
 const icons = {
@@ -9,6 +9,7 @@ const icons = {
   Database: Database,
   DevOps: Cloud,
   'AI Tools': Bot,
+  Languages,
 }
 
 function tilt(event) {

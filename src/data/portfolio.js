@@ -71,8 +71,9 @@ export const skills = [
   { group: 'Frontend', items: ['Vue.js', 'Nuxt', 'React', 'Next.js', 'Angular', 'Tailwind CSS'] },
   { group: 'Backend', items: ['Node.js', 'NestJS', 'Laravel', 'Spring Boot', 'RabbitMQ', 'Firebase'] },
   { group: 'Database', items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Supabase'] },
-  { group: 'DevOps', items: ['Docker', 'Kubernetes', 'AWS', 'Azure', 'Jenkins', 'Cloudflare', 'CI/CD'] },
-  { group: 'AI Tools', items: ['Claude Code', 'Codex', 'n8n', 'Ollama', 'Windsurf'] },
+  { group: 'DevOps', items: ['Docker', 'Kubernetes', 'AWS', 'Azure', 'Jenkins', 'Cloudflare', 'Git', 'CI/CD'] },
+  { group: 'AI Tools', items: ['Claude Code', 'Codex', 'n8n', 'Ollama', 'Windsurf', 'Stitch', 'Zep', 'Open Router'] },
+  { group: 'Languages', items: ['English', 'Bahasa Indonesia'] },
 ]
 
 export const projects = [
@@ -81,7 +82,7 @@ export const projects = [
     year: '2026',
     description:
       'Car rental booking app for Batam: browse the fleet, pick dates, add a driver if needed, with clear daily pricing and promo codes.',
-    image: 'numpak.jpg',
+    image: 'numpak-logo.svg',
     link: 'https://numpak-rental.vercel.app/',
     tags: ['Nuxt', 'Vercel'],
   },
