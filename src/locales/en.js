@@ -181,7 +181,7 @@ export default {
     accent: 'Projects',
     descriptions: {
       numpak:
-        'Car rental booking app for Batam: browse the fleet, pick dates, add a driver if needed, with clear daily pricing and promo codes.',
+        'A rebuild of my earlier Atma Jaya Rental project on the latest stack and versions: a Nuxt 4 web app in English and Indonesian, a NestJS API, and a Turborepo monorepo. Customers book cars with or without a driver, while drivers and admins get their own areas.',
       automation:
         'Flask API running on-device via Termux that drives Grab, Gojek, and other Android apps through UI automation, orchestrated through n8n and exposed via a Cloudflare Tunnel.',
       chatbot: 'Location-aware chatbot built on Ollama and OpenWebUI, integrated with Google Maps.',

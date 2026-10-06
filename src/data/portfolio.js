@@ -41,7 +41,7 @@ export const projects = [
     year: '2026',
     image: 'numpak-logo.svg',
     link: 'https://numpak-rental.vercel.app/',
-    tags: ['Nuxt', 'Vercel'],
+    tags: ['Nuxt 4', 'NestJS', 'PostgreSQL', 'Vercel'],
   },
   {
     id: 'automation',

@@ -182,7 +182,7 @@ export default {
     accent: 'Terbaru',
     descriptions: {
       numpak:
-        'Aplikasi pemesanan rental mobil di Batam: lihat armada, pilih tanggal, tambah sopir bila perlu, dengan harga harian yang jelas dan kode promo.',
+        'Pembangunan ulang proyek Atma Jaya Rental saya sebelumnya dengan stack dan versi terbaru: aplikasi web Nuxt 4 dalam bahasa Inggris dan Indonesia, API NestJS, dan monorepo Turborepo. Pelanggan memesan mobil dengan atau tanpa sopir, sementara sopir dan admin punya area masing-masing.',
       automation:
         'API Flask yang berjalan di perangkat lewat Termux untuk mengendalikan Grab, Gojek, dan aplikasi Android lain melalui otomasi UI, diorkestrasi dengan n8n dan diekspos melalui Cloudflare Tunnel.',
       chatbot: 'Chatbot yang sadar lokasi, dibangun di atas Ollama dan OpenWebUI, terintegrasi dengan Google Maps.',
