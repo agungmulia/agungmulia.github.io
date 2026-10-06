@@ -1,9 +1,15 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Sun, Moon } from '@lucide/vue'
-import { navLinks, profile } from '../data/portfolio'
+import { Sun, Moon, Languages } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
+import { profile } from '../data/portfolio'
+import { useContent } from '../composables/useContent'
+import { useLocale } from '../composables/useLocale'
 import { useTheme } from '../composables/useTheme'
 
+const { t } = useI18n()
+const { navLinks } = useContent()
+const { locale, toggle: toggleLocale } = useLocale()
 const { theme, toggle: toggleTheme } = useTheme()
 const open = ref(false)
 const active = ref('home')
@@ -15,7 +21,7 @@ function scrollTo(id) {
 
 let observer
 onMounted(() => {
-  const sections = navLinks
+  const sections = navLinks.value
     .map((link) => document.getElementById(link.id))
     .filter(Boolean)
 
@@ -53,7 +59,7 @@ onUnmounted(() => observer?.disconnect())
       <div class="flex items-center gap-3">
         <button
           class="rounded-full p-2 text-subtle transition hover:bg-chip/10 hover:text-heading"
-          aria-label="Toggle theme"
+          :aria-label="t('navbar.toggleTheme')"
           @click="toggleTheme"
         >
           <Sun v-if="theme === 'dark'" :size="18" />
@@ -61,13 +67,22 @@ onUnmounted(() => observer?.disconnect())
         </button>
 
         <button
+          class="flex items-center gap-1 rounded-full p-2 text-xs font-medium uppercase text-subtle transition hover:bg-chip/10 hover:text-heading"
+          :aria-label="t('navbar.switchLanguage')"
+          @click="toggleLocale"
+        >
+          <Languages :size="18" />
+          {{ locale }}
+        </button>
+
+        <button
           class="hidden rounded-full border border-accent-pink/40 px-4 py-1.5 text-sm text-accent-pink transition hover:bg-accent-pink hover:text-white sm:block"
           @click="scrollTo('contact')"
         >
-          Say Hi
+          {{ t('navbar.sayHi') }}
         </button>
 
-        <button class="sm:hidden" aria-label="Toggle menu" @click="open = !open">
+        <button class="sm:hidden" :aria-label="t('navbar.toggleMenu')" @click="open = !open">
           <span
             class="block h-0.5 w-6 bg-heading transition"
             :class="{ 'translate-y-1.5 rotate-45': open }"

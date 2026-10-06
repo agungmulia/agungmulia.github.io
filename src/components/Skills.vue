@@ -1,15 +1,19 @@
 <script setup>
 import { Terminal, Monitor, Server, Database, Cloud, Bot, Languages } from '@lucide/vue'
-import { skills } from '../data/portfolio'
+import { useI18n } from 'vue-i18n'
+import { useContent } from '../composables/useContent'
+
+const { t } = useI18n()
+const { skills } = useContent()
 
 const icons = {
-  Programming: Terminal,
-  Frontend: Monitor,
-  Backend: Server,
-  Database: Database,
-  DevOps: Cloud,
-  'AI Tools': Bot,
-  Languages,
+  programming: Terminal,
+  frontend: Monitor,
+  backend: Server,
+  database: Database,
+  devops: Cloud,
+  ai: Bot,
+  languages: Languages,
 }
 
 function tilt(event) {
@@ -44,13 +48,13 @@ function resetTilt(event) {
 
     <div class="relative mx-auto max-w-6xl px-6">
       <h2 data-reveal class="text-center font-display text-3xl font-semibold text-heading md:text-4xl">
-        Skills & <span class="text-gradient">Tools</span>
+        {{ t('skills.title') }} <span class="text-gradient">{{ t('skills.accent') }}</span>
       </h2>
 
       <div class="mt-10 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="group in skills"
-          :key="group.group"
+          :key="group.id"
           data-reveal
           class="glass-card rounded-2xl p-6"
           @pointermove="tilt"
@@ -60,8 +64,8 @@ function resetTilt(event) {
             <h3
               class="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wider text-accent-pink"
             >
-              <component :is="icons[group.group]" :size="16" />
-              {{ group.group }}
+              <component :is="icons[group.id]" :size="16" />
+              {{ group.label }}
             </h3>
             <ul class="mt-4 flex flex-wrap gap-2">
               <li

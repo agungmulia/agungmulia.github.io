@@ -1,8 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { Briefcase, GraduationCap, Maximize2 } from '@lucide/vue'
-import { experience, education } from '../data/portfolio'
+import { useI18n } from 'vue-i18n'
+import { useContent } from '../composables/useContent'
 import Modal from './Modal.vue'
+
+const { t } = useI18n()
+const { experience, education } = useContent()
 
 function initials(name) {
   const words = name.replace(/\(.*?\)/g, '').trim().split(/\s+/)
@@ -14,18 +18,26 @@ function initials(name) {
     .toUpperCase()
 }
 
-const selected = ref(null)
+// Only the id is stored so the open modal re-renders when the locale changes.
+const selectedRef = ref(null)
+
+const selected = computed(() => {
+  if (!selectedRef.value) return null
+  const { type, id } = selectedRef.value
+  const item = (type === 'job' ? experience : education).value.find((entry) => entry.id === id)
+  return { type, ...item }
+})
 
 function openJob(job) {
-  selected.value = { type: 'job', ...job }
+  selectedRef.value = { type: 'job', id: job.id }
 }
 
 function openSchool(school) {
-  selected.value = { type: 'school', ...school }
+  selectedRef.value = { type: 'school', id: school.id }
 }
 
 function close() {
-  selected.value = null
+  selectedRef.value = null
 }
 </script>
 
@@ -33,19 +45,19 @@ function close() {
   <section id="experience" class="bg-surface py-16 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-6xl px-6">
       <h2 data-reveal class="text-center font-display text-3xl font-semibold text-heading md:text-4xl">
-        Experience & <span class="text-gradient">Education</span>
+        {{ t('journey.title') }} <span class="text-gradient">{{ t('journey.accent') }}</span>
       </h2>
 
       <div class="mt-10 sm:mt-16">
         <h3
           class="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-widest text-accent-pink"
         >
-          <Briefcase :size="16" /> Experience
+          <Briefcase :size="16" /> {{ t('journey.experience') }}
         </h3>
         <div class="mt-6 space-y-3 sm:space-y-4">
           <button
             v-for="job in experience"
-            :key="job.company"
+            :key="job.id"
             type="button"
             data-reveal
             class="group flex w-full gap-3 rounded-2xl border border-line/10 bg-panel/60 p-4 text-left transition hover:-translate-y-1 hover:border-accent-pink/40 sm:gap-5 sm:p-6"
@@ -78,12 +90,12 @@ function close() {
         <h3
           class="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-widest text-accent-blue"
         >
-          <GraduationCap :size="16" /> Education
+          <GraduationCap :size="16" /> {{ t('journey.education') }}
         </h3>
         <div class="mt-6 grid gap-3 sm:gap-4 md:grid-cols-2">
           <button
             v-for="school in education"
-            :key="school.school"
+            :key="school.id"
             type="button"
             data-reveal
             class="group flex w-full gap-3 rounded-2xl border border-line/10 bg-panel/60 p-4 text-left transition hover:-translate-y-1 hover:border-accent-blue/40 sm:gap-4 sm:p-6"
@@ -113,7 +125,7 @@ function close() {
       <template v-if="selected">
         <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-subtle">
           <component :is="selected.type === 'job' ? Briefcase : GraduationCap" :size="14" />
-          {{ selected.type === 'job' ? 'Experience' : 'Education' }}
+          {{ selected.type === 'job' ? t('journey.experience') : t('journey.education') }}
         </div>
         <h3 class="mt-2 font-display text-2xl font-semibold text-heading">
           {{ selected.type === 'job' ? selected.role : selected.school }}

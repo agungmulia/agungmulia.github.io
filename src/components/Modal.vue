@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { X } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   open: { type: Boolean, default: false },
@@ -8,6 +9,7 @@ const props = defineProps({
 })
 const emit = defineEmits(['close'])
 
+const { t } = useI18n()
 const dialog = ref(null)
 
 watch(
@@ -34,7 +36,7 @@ function onBackdropClick(event) {
     <div class="relative max-h-[80vh] overflow-y-auto p-8">
       <button
         class="absolute right-6 top-6 text-subtle transition hover:text-heading"
-        aria-label="Close"
+        :aria-label="t('common.close')"
         @click="emit('close')"
       >
         <X :size="20" />

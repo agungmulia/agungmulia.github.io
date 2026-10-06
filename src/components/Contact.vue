@@ -1,17 +1,27 @@
 <script setup>
+import { computed } from 'vue'
 import { Mail, MessageCircle, ArrowRight, Code2, Briefcase, Camera } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
 import { profile } from '../data/portfolio'
 
-const contactMethods = [
-  { name: 'Email', value: profile.email, href: `mailto:${profile.email}`, cta: 'Send an email', icon: Mail },
+const { t } = useI18n()
+
+const contactMethods = computed(() => [
   {
-    name: 'WhatsApp',
+    name: t('contact.email'),
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    cta: t('contact.emailCta'),
+    icon: Mail,
+  },
+  {
+    name: t('contact.whatsapp'),
     value: profile.whatsapp,
     href: profile.whatsappUrl,
-    cta: 'Message me',
+    cta: t('contact.whatsappCta'),
     icon: MessageCircle,
   },
-]
+])
 
 const socialIcons = {
   GitHub: Code2,
@@ -24,10 +34,10 @@ const socialIcons = {
   <footer id="contact" class="mx-auto max-w-6xl px-6 py-16 sm:py-24 lg:py-28">
     <div data-reveal class="text-center">
       <h2 class="font-display text-3xl font-semibold text-heading md:text-4xl">
-        Let's Discuss Your <span class="text-gradient">Project</span>
+        {{ t('contact.title') }} <span class="text-gradient">{{ t('contact.accent') }}</span>
       </h2>
       <p class="mx-auto mt-4 max-w-md text-muted">
-        Have an idea, a role, or just want to say hi? I'd love to hear from you.
+        {{ t('contact.subtitle') }}
       </p>
     </div>
 

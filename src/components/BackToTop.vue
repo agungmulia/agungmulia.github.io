@@ -1,6 +1,9 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import { ArrowUp } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const visible = ref(false)
 
@@ -31,7 +34,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     <button
       v-if="visible"
       class="fixed bottom-6 left-6 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-line/10 bg-panel/80 text-subtle shadow-lg backdrop-blur-md transition-colors hover:border-accent-pink/40 hover:text-heading"
-      aria-label="Back to top"
+      :aria-label="t('common.backToTop')"
       @click="scrollToTop"
     >
       <ArrowUp :size="18" />

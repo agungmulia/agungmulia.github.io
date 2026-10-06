@@ -10,11 +10,18 @@ import {
   Camera,
   FileText,
   SunMoon,
+  Languages,
 } from '@lucide/vue'
-import { profile, navLinks } from '../data/portfolio'
+import { useI18n } from 'vue-i18n'
+import { profile } from '../data/portfolio'
+import { useContent } from '../composables/useContent'
+import { useLocale } from '../composables/useLocale'
 import { useTheme } from '../composables/useTheme'
 import { useCvPreview } from '../composables/useCvPreview'
 
+const { t } = useI18n()
+const { navLinks } = useContent()
+const { toggle: toggleLocale } = useLocale()
 const { theme, toggle: toggleTheme } = useTheme()
 const cvPreview = useCvPreview()
 
@@ -30,23 +37,23 @@ function scrollTo(id) {
 }
 
 const commands = computed(() => [
-  ...navLinks.map((link) => ({
+  ...navLinks.value.map((link) => ({
     id: `nav-${link.id}`,
     label: link.name,
-    hint: 'Jump to section',
+    hint: t('palette.jump'),
     icon: ArrowRight,
     run: () => scrollTo(link.id),
   })),
   {
     id: 'cv',
-    label: 'Preview CV',
-    hint: 'Open resume',
+    label: t('palette.previewCv'),
+    hint: t('palette.openResume'),
     icon: FileText,
     run: () => cvPreview.open(),
   },
   {
     id: 'email',
-    label: 'Email me',
+    label: t('palette.emailMe'),
     hint: profile.email,
     icon: Mail,
     run: () => {
@@ -55,7 +62,7 @@ const commands = computed(() => [
   },
   {
     id: 'whatsapp',
-    label: 'Message on WhatsApp',
+    label: t('palette.messageWhatsapp'),
     hint: profile.whatsapp,
     icon: MessageCircle,
     run: () => window.open(profile.whatsappUrl, '_blank', 'noopener'),
@@ -69,10 +76,17 @@ const commands = computed(() => [
   })),
   {
     id: 'theme',
-    label: theme.value === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
-    hint: 'Toggle theme',
+    label: theme.value === 'dark' ? t('palette.toLight') : t('palette.toDark'),
+    hint: t('palette.toggleTheme'),
     icon: SunMoon,
     run: () => toggleTheme(),
+  },
+  {
+    id: 'language',
+    label: t('palette.switchLanguage'),
+    hint: t('palette.languageHint'),
+    icon: Languages,
+    run: () => toggleLocale(),
   },
 ])
 
@@ -137,11 +151,11 @@ onUnmounted(() => window.removeEventListener('keydown', onGlobalKeydown))
 <template>
   <button
     class="fixed bottom-6 right-6 z-40 hidden items-center gap-2 rounded-full border border-line/10 bg-panel/80 px-4 py-2.5 text-xs text-subtle shadow-lg backdrop-blur-md transition hover:border-accent-pink/40 hover:text-heading sm:flex"
-    aria-label="Open quick search"
+    :aria-label="t('palette.open')"
     @click="openPalette"
   >
     <Search :size="14" />
-    Quick search
+    {{ t('palette.button') }}
     <kbd class="rounded border border-line/15 bg-chip/5 px-1.5 py-0.5 font-sans text-[10px]">⌘K</kbd>
   </button>
 
@@ -156,7 +170,7 @@ onUnmounted(() => window.removeEventListener('keydown', onGlobalKeydown))
         ref="input"
         v-model="query"
         type="text"
-        placeholder="Jump to a section, or do something…"
+        :placeholder="t('palette.placeholder')"
         class="w-full bg-transparent text-sm text-heading placeholder:text-subtle focus:outline-none"
         @keydown="onKeydown"
       />
@@ -164,7 +178,7 @@ onUnmounted(() => window.removeEventListener('keydown', onGlobalKeydown))
     </div>
 
     <ul class="max-h-80 overflow-y-auto p-2">
-      <li v-if="filtered.length === 0" class="px-3 py-6 text-center text-sm text-subtle">No matches</li>
+      <li v-if="filtered.length === 0" class="px-3 py-6 text-center text-sm text-subtle">{{ t('palette.empty') }}</li>
       <li v-for="(cmd, index) in filtered" :key="cmd.id">
         <button
           type="button"

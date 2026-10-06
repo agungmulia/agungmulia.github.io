@@ -1,5 +1,9 @@
 <script setup>
-import { projects } from '../data/portfolio'
+import { useI18n } from 'vue-i18n'
+import { useContent } from '../composables/useContent'
+
+const { t } = useI18n()
+const { projects } = useContent()
 
 function tilt(event) {
   const card = event.currentTarget
@@ -17,13 +21,13 @@ function resetTilt(event) {
 <template>
   <section id="projects" class="mx-auto max-w-6xl px-6 py-16 sm:py-24 lg:py-28">
     <h2 data-reveal class="text-center font-display text-3xl font-semibold text-heading md:text-4xl">
-      Recent <span class="text-gradient">Projects</span>
+      {{ t('projects.title') }} <span class="text-gradient">{{ t('projects.accent') }}</span>
     </h2>
 
     <div class="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
       <a
         v-for="project in projects"
-        :key="project.title"
+        :key="project.id"
         :href="project.link"
         target="_blank"
         rel="noopener"
