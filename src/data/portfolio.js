@@ -44,6 +44,14 @@ export const projects = [
     tags: ['Nuxt 4', 'NestJS', 'PostgreSQL', 'Vercel'],
   },
   {
+    id: 'uptodae',
+    title: 'UpToDae — Payday Budgeting App',
+    year: '2026',
+    image: 'uptodae.jpg',
+    link: 'https://uptodae.vercel.app/',
+    tags: ['Nuxt 4', 'NestJS', 'Supabase', 'Vercel'],
+  },
+  {
     id: 'automation',
     title: 'Android App UI Automation API',
     year: '2025',

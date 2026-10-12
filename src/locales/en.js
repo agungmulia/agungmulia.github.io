@@ -182,6 +182,8 @@ export default {
     descriptions: {
       numpak:
         'A rebuild of my earlier Atma Jaya Rental project on the latest stack and versions: a Nuxt 4 web app in English and Indonesian, a NestJS API, and a Turborepo monorepo. Customers book cars with or without a driver, while drivers and admins get their own areas.',
+      uptodae:
+        'Payday-first budgeting web app for young Indonesian earners: plan every rupiah when salary lands, log spending in seconds, and see what is left per category. Nuxt 4 frontend, NestJS API, Supabase, live notifications, in English and Indonesian.',
       automation:
         'Flask API running on-device via Termux that drives Grab, Gojek, and other Android apps through UI automation, orchestrated through n8n and exposed via a Cloudflare Tunnel.',
       chatbot: 'Location-aware chatbot built on Ollama and OpenWebUI, integrated with Google Maps.',
