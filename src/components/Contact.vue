@@ -34,7 +34,7 @@ const socialIcons = {
   <footer id="contact" class="mx-auto max-w-6xl px-6 py-16 sm:py-24 lg:py-28">
     <div data-reveal class="text-center">
       <h2 class="font-display text-3xl font-semibold text-heading md:text-4xl">
-        {{ t('contact.title') }} <span class="text-gradient">{{ t('contact.accent') }}</span>
+        {{ t('contact.title') }} <span class="text-accent-pink">{{ t('contact.accent') }}</span>
       </h2>
       <p class="mx-auto mt-4 max-w-md text-muted">
         {{ t('contact.subtitle') }}
@@ -51,7 +51,7 @@ const socialIcons = {
         class="group rounded-2xl border border-line/10 bg-panel/60 p-5 transition hover:border-accent-pink/40 sm:p-6"
       >
         <div
-          class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent-pink/20 to-accent-violet/20 text-accent-pink"
+          class="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-pink/15 text-accent-pink"
         >
           <component :is="method.icon" :size="18" />
         </div>

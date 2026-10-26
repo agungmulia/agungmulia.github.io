@@ -21,7 +21,7 @@ function resetTilt(event) {
 <template>
   <section id="projects" class="mx-auto max-w-6xl px-6 py-16 sm:py-24 lg:py-28">
     <h2 data-reveal class="text-center font-display text-3xl font-semibold text-heading md:text-4xl">
-      {{ t('projects.title') }} <span class="text-gradient">{{ t('projects.accent') }}</span>
+      {{ t('projects.title') }} <span class="text-accent-pink">{{ t('projects.accent') }}</span>
     </h2>
 
     <div class="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
@@ -32,7 +32,7 @@ function resetTilt(event) {
         target="_blank"
         rel="noopener"
         data-reveal
-        class="group overflow-hidden rounded-2xl border border-line/10 bg-panel/60 transition-shadow hover:shadow-2xl hover:shadow-accent-violet/10"
+        class="group overflow-hidden rounded-2xl border border-line/10 bg-panel/60 transition-shadow hover:shadow-2xl hover:shadow-accent-pink/10"
         style="transition: transform 0.15s ease"
         @pointermove="tilt"
         @pointerleave="resetTilt"
@@ -46,7 +46,7 @@ function resetTilt(event) {
           />
           <div
             v-else
-            class="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent-violet/20 via-accent-pink/10 to-accent-blue/20 font-display text-3xl text-heading/20 transition duration-500 group-hover:text-heading/30"
+            class="flex h-full w-full items-center justify-center bg-accent-pink/10 font-display text-3xl text-heading/20 transition duration-500 group-hover:text-heading/30"
           >
             {{ project.tags[0] }}
           </div>

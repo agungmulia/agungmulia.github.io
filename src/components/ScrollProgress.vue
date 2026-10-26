@@ -18,7 +18,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 <template>
   <div class="fixed inset-x-0 top-0 z-[60] h-[3px]">
     <div
-      class="h-full bg-gradient-to-r from-accent-pink via-accent-violet to-accent-blue"
+      class="h-full bg-accent-pink"
       :style="{ width: `${progress}%` }"
     />
   </div>

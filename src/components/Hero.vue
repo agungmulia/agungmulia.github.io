@@ -93,7 +93,7 @@ function resetTilt(event) {
         </p>
         <h1 class="font-display text-4xl font-semibold leading-tight text-heading sm:text-5xl md:text-6xl">
           {{ t('hero.greeting') }}
-          <span class="text-gradient">{{ profile.fullName }}</span>
+          <span class="text-accent-pink">{{ profile.fullName }}</span>
         </h1>
         <p class="mt-6 max-w-lg text-muted">{{ t('profile.tagline') }}</p>
 
@@ -129,7 +129,7 @@ function resetTilt(event) {
 
       <div data-reveal class="relative mx-auto flex max-w-xs justify-center md:max-w-md">
         <div
-          class="absolute inset-0 m-auto h-44 w-44 animate-breathe rounded-full bg-gradient-to-br from-accent-pink/30 via-accent-violet/20 to-accent-blue/30 blur-3xl sm:h-64 sm:w-64 md:h-80 md:w-80"
+          class="absolute inset-0 m-auto h-44 w-44 animate-breathe rounded-full bg-accent-pink/25 blur-3xl sm:h-64 sm:w-64 md:h-80 md:w-80"
         />
         <div class="w-full animate-float">
           <img

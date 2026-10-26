@@ -41,7 +41,7 @@ onUnmounted(() => observer?.disconnect())
   <header class="fixed inset-x-0 top-0 z-50 border-b border-line/5 bg-ink/70 backdrop-blur-lg">
     <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
       <button class="font-display text-lg font-semibold text-heading" @click="scrollTo('home')">
-        {{ profile.firstName }}<span class="text-gradient">{{ profile.lastName }}</span>
+        {{ profile.firstName }}<span class="text-accent-pink">{{ profile.lastName }}</span>
       </button>
 
       <ul class="hidden items-center gap-8 text-sm text-body sm:flex">

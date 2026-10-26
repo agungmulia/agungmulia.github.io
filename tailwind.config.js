@@ -23,9 +23,7 @@ export default {
         line: themedColor('--color-line'),
         chip: themedColor('--color-chip'),
         accent: {
-          violet: '#8b5cf6',
           pink: '#ec4899',
-          blue: '#3b82f6',
         },
       },
       fontFamily: {

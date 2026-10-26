@@ -13,7 +13,7 @@ const icons = { backend: Server, frontend: Monitor, ai: Sparkles }
   <section id="about" class="mx-auto max-w-6xl px-6 py-16 sm:py-24 lg:py-28">
     <div data-reveal class="mx-auto max-w-2xl text-center">
       <h2 class="font-display text-3xl font-semibold text-heading md:text-4xl">
-        {{ t('about.title') }} <span class="text-gradient">{{ t('about.accent') }}</span>
+        {{ t('about.title') }} <span class="text-accent-pink">{{ t('about.accent') }}</span>
       </h2>
       <p class="mt-4 text-left text-muted sm:text-center">{{ t('profile.tagline') }}</p>
     </div>
@@ -26,7 +26,7 @@ const icons = { backend: Server, frontend: Monitor, ai: Sparkles }
         class="rounded-2xl border border-line/10 bg-panel/60 p-6 transition hover:border-accent-pink/40 hover:-translate-y-1 sm:p-8"
       >
         <div
-          class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent-pink/20 to-accent-violet/20 text-accent-pink"
+          class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-pink/15 text-accent-pink"
         >
           <component :is="icons[service.id]" :size="20" />
         </div>

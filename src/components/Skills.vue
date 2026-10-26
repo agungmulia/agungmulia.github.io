@@ -39,16 +39,16 @@ function resetTilt(event) {
     />
     <div
       class="absolute -right-24 bottom-0 h-[30rem] w-[30rem] animate-breathe rounded-full blur-2xl [animation-delay:-2.5s]"
-      style="background: radial-gradient(circle, rgb(139 92 246 / 0.24), transparent 70%)"
+      style="background: radial-gradient(circle, rgb(236 72 153 / 0.2), transparent 70%)"
     />
     <div
       class="absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 animate-breathe rounded-full blur-2xl [animation-delay:-4s]"
-      style="background: radial-gradient(circle, rgb(59 130 246 / 0.16), transparent 70%)"
+      style="background: radial-gradient(circle, rgb(236 72 153 / 0.14), transparent 70%)"
     />
 
     <div class="relative mx-auto max-w-6xl px-6">
       <h2 data-reveal class="text-center font-display text-3xl font-semibold text-heading md:text-4xl">
-        {{ t('skills.title') }} <span class="text-gradient">{{ t('skills.accent') }}</span>
+        {{ t('skills.title') }} <span class="text-accent-pink">{{ t('skills.accent') }}</span>
       </h2>
 
       <div class="mt-10 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">

@@ -45,7 +45,7 @@ function close() {
   <section id="experience" class="bg-surface py-16 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-6xl px-6">
       <h2 data-reveal class="text-center font-display text-3xl font-semibold text-heading md:text-4xl">
-        {{ t('journey.title') }} <span class="text-gradient">{{ t('journey.accent') }}</span>
+        {{ t('journey.title') }} <span class="text-accent-pink">{{ t('journey.accent') }}</span>
       </h2>
 
       <div class="mt-10 sm:mt-16">
@@ -64,7 +64,7 @@ function close() {
             @click="openJob(job)"
           >
             <div
-              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent-pink/20 to-accent-violet/20 font-display text-xs font-semibold text-accent-pink sm:h-12 sm:w-12 sm:text-sm"
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-pink/15 font-display text-xs font-semibold text-accent-pink sm:h-12 sm:w-12 sm:text-sm"
             >
               {{ initials(job.company) }}
             </div>
@@ -88,7 +88,7 @@ function close() {
 
       <div class="mt-10 sm:mt-16">
         <h3
-          class="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-widest text-accent-blue"
+          class="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-widest text-accent-pink"
         >
           <GraduationCap :size="16" /> {{ t('journey.education') }}
         </h3>
@@ -98,7 +98,7 @@ function close() {
             :key="school.id"
             type="button"
             data-reveal
-            class="group flex w-full gap-3 rounded-2xl border border-line/10 bg-panel/60 p-4 text-left transition hover:-translate-y-1 hover:border-accent-blue/40 sm:gap-4 sm:p-6"
+            class="group flex w-full gap-3 rounded-2xl border border-line/10 bg-panel/60 p-4 text-left transition hover:-translate-y-1 hover:border-accent-pink/40 sm:gap-4 sm:p-6"
             @click="openSchool(school)"
           >
             <img
@@ -108,7 +108,7 @@ function close() {
             />
             <div class="min-w-0 flex-1">
               <p class="font-display text-base font-semibold text-heading">{{ school.school }}</p>
-              <p class="text-sm font-medium text-accent-blue">{{ school.major }}</p>
+              <p class="text-sm font-medium text-accent-pink">{{ school.major }}</p>
               <p class="text-xs text-subtle">{{ school.year }}</p>
               <p class="mt-2 text-sm text-muted">{{ school.note }}</p>
             </div>
@@ -132,7 +132,7 @@ function close() {
         </h3>
         <p
           class="text-sm font-medium"
-          :class="selected.type === 'job' ? 'text-accent-pink' : 'text-accent-blue'"
+          :class="selected.type === 'job' ? 'text-accent-pink' : 'text-accent-pink'"
         >
           {{ selected.type === 'job' ? selected.company : selected.major }}
         </p>
